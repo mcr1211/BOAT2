@@ -229,7 +229,7 @@ public class Empresa {
         }
     }
     
-    //Llista lloguer entre dos dies.
+    //Llista lloguer disponible entre dos dies.
     public ArrayList llistaLloguerDies(Date dataInici, Date datafi) throws LlistesException {
         ArrayList<Lloguer> llistatLloguerDies = new ArrayList();
         if(llistaLloguer.isEmpty()){
