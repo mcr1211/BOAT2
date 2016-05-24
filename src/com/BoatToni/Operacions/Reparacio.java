@@ -5,6 +5,7 @@
  */
 package com.BoatToni.Operacions;
 
+import com.BoatToni.Exceptions.ReparacioException;
 import com.BoatToni.Persona.Client;
 import com.BoatToni.Persona.Taller;
 import com.BoatToni.Vaixell.Vaixell;
@@ -26,16 +27,24 @@ public class Reparacio extends Operacio {
     private String descripcio;
     private double preuFactura;
 
-    public Reparacio(Client propietari, Vaixell vaixell, String llocReparacio, Date dataInici, Date dataPrevFinal, String descripcio, double preuPresupost, int id, Estat estat) {
+    public Reparacio(Client propietari, Vaixell vaixell, String llocReparacio, Date dataInici, Date dataPrevFinal, String descripcio, double preuPresupost, int id, Estat estat) throws ReparacioException {
         super(estat);
         this.propietari = propietari;
         this.vaixell = vaixell;
         this.treballadors = treballadors;
         this.llocReparacio = llocReparacio;
-        this.dataInici = dataInici;
+        if("".equals(dataInici)){
+            throw new ReparacioException("Has de posar una dataInici de reparacio.");
+        }else {
+            this.dataInici = dataInici;
+        }
         this.dataPrevFinal = dataPrevFinal;
         this.descripcio = descripcio;
-        this.preuFactura = preuPresupost;
+        if("".equals(preuFactura)){
+            throw new ReparacioException("Has de posar un valor a la factura.");
+        }else {
+            this.preuFactura = preuFactura;
+        }
     }
 
     public Vaixell getVaixell() {
