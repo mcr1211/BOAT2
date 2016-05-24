@@ -12,6 +12,7 @@ import com.BoatToni.Persona.Taller;
 import com.BoatToni.Vaixell.Model;
 import com.BoatToni.Vaixell.Vaixell;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -225,6 +226,23 @@ public class Empresa {
                 llistatReparacions.add(r);
             }
             return llistatReparacions;
+        }
+    }
+    
+    //Llista lloguer entre dos dies.
+    public ArrayList llistaLloguerDies(Date dataInici, Date datafi) throws LlistesException {
+        ArrayList<Lloguer> llistatLloguerDies = new ArrayList();
+        if(llistaLloguer.isEmpty()){
+            throw new LlistesException("Llista buida.");
+        }else {
+            for (Lloguer l: llistaLloguer.values()){
+                if(l.getDataInici().after(datafi) && l.getDataFi().before(datafi) ){
+                    throw new LlistesException("Data incorrecte.");
+                }else {
+                    llistatLloguerDies.add(l);
+                }
+            }
+            return llistatLloguerDies;
         }
     }
 }
