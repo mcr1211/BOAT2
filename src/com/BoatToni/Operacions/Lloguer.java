@@ -66,7 +66,7 @@ public class Lloguer extends Operacio {
 
     public void setDataInici(Date dataInici) throws LloguerException {
         if (dataInici.after(dataFi)) {
-            throw new LloguerException();
+            throw new LloguerException("La data d'inici es erronea.");
         } else {
             this.dataInici = dataInici;
         }
@@ -74,7 +74,7 @@ public class Lloguer extends Operacio {
 
     public void setDataFi(Date dataFi) throws LloguerException {
         if (dataFi.before(dataInici)) {
-            throw new LloguerException();
+            throw new LloguerException("La data fi es erronea.");
         } else {
             this.dataFi = dataFi;
         }
