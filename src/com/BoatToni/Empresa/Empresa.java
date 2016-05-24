@@ -22,6 +22,7 @@ import java.util.Map;
  */
 public class Empresa {
 
+    private String nom;
     private HashMap<Integer, Model> llistaModels;
     private HashMap<String, Vaixell> llistaVaixell;
     private HashMap<String, Client> llistaClient;
@@ -32,7 +33,7 @@ public class Empresa {
     private HashMap<Integer, Venda> llistaVenda;
     private HashMap<Integer, Lloguer> llistaLloguer;
 
-    public Empresa() {
+    public Empresa(String nom) {
         llistaModels = new HashMap<>();
         llistaVaixell = new HashMap<>();
         llistaClient = new HashMap<>();
@@ -40,6 +41,15 @@ public class Empresa {
         llistaPatro = new HashMap<>();
         llistaReparacions = new HashMap<>();
         llistaVenda = new HashMap<>();
+        this.nom = nom;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public HashMap<Integer, Model> getLlistaModels() {
@@ -227,4 +237,10 @@ public class Empresa {
             return llistatReparacions;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Empresa{" + "nom=" + nom + '}';
+    }
+
 }
