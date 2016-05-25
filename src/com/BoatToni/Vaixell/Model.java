@@ -32,6 +32,11 @@ public class Model implements Serializable{
         this.calat = calat;
         this.preu = preu;
     }
+    
+    
+    public void tonarJson(){
+        
+    }
 
     public int getIdModel() {
         return idModel;

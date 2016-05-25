@@ -7,22 +7,26 @@ package com.BoatToni.Vaixell;
 
 import com.BoatToni.Persona.Client;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  *
  * @author Toni Dalmau Martínez
  */
-public class Vaixell implements Serializable{
-    
+public class Vaixell implements Serializable {
+
+    private Date disponible;
     private String matricula;
     private boolean llogar;
     private double preuXdia;
     private Client propietari;
     private Model model;
 
-    public Vaixell(String matricula, boolean llogar, Client propietari, Model model) {
+    public Vaixell(Date disponible, String matricula, boolean llogar, double preuXdia, Client propietari, Model model) {
+        this.disponible = disponible;
         this.matricula = matricula;
         this.llogar = llogar;
+        this.preuXdia = preuXdia;
         this.propietari = propietari;
         this.model = model;
     }
@@ -67,10 +71,17 @@ public class Vaixell implements Serializable{
         this.model = model;
     }
 
+    public Date getDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(Date disponible) {
+        this.disponible = disponible;
+    }
+
     @Override
     public String toString() {
         return "Vaixell{" + "matricula=" + matricula + ", llogar=" + llogar + ", preuXdia=" + preuXdia + ", propietari=" + propietari + ", model=" + model + '}';
     }
-    
-    
+
 }

@@ -20,8 +20,7 @@ import static org.junit.Assert.*;
  */
 public class ProvesLlistaClient {
     
-    public ProvesLlistaClient() {
-    }
+   
     
     @Test
     public void afegirClient() throws PersonaException, EmpresaException{

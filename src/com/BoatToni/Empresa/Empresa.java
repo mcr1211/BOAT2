@@ -233,29 +233,29 @@ public class Empresa implements Serializable {
         return llistaModels;
     }
 
-//    public ArrayList<Vaixell> llistaEmbDisponibles(Date inici, Date altre) {
-//        ArrayList<Vaixell> lista = new ArrayList<>();
-//        for (Vaixell i : llistaVaixell.values()) {
-//            if (i.isLlogar()) {
-//                lista.add(i);
-//            }
-//        }
-//        if (!llistaLloguer.isEmpty()) {
-//            for (Lloguer k : llistaLloguer.values()) {
-//                lista.remove(k);
-//            }
-//
-//        }
-//        for (Vaixell i : llistaVaixell.values()) {
-//            if (i.isLlogar()) {
-//                if (i.getDisponible().after(inici) && i.getDisponible().before(altre)) {
-//                } else {
-//                    lista.remove(i);
-//                }
-//            }
-//        }
-//        return lista;
-//    }
+    public ArrayList<Vaixell> llistaEmbDisponibles(Date inici, Date altre) {
+        ArrayList<Vaixell> lista = new ArrayList<>();
+        for (Vaixell i : llistaVaixell.values()) {
+            if (i.isLlogar()) {
+                lista.add(i);
+            }
+        }
+        if (!llistaLloguer.isEmpty()) {
+            for (Lloguer k : llistaLloguer.values()) {
+                lista.remove(k);
+            }
+
+        }
+        for (Vaixell i : llistaVaixell.values()) {
+            if (i.isLlogar()) {
+                if (i.getDisponible().after(inici) && i.getDisponible().before(altre)) {
+                } else {
+                    lista.remove(i);
+                }
+            }
+        }
+        return lista;
+    }
 
     //Llistar models per tipus de model.
     public ArrayList<Model> tipusModels(Model tipus) throws LlistesException {

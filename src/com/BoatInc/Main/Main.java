@@ -134,11 +134,14 @@ public class Main {
             emp.afegirClient(cli4);
             emp.afegirClient(cli5);
 
-            Vaixell embar = new Vaixell("6ª-TA-2-010-12", false, cli, veler1);
-            Vaixell embar2 = new Vaixell("7ª-TA-2-011-12", true, cli2, veler1);
-            Vaixell embar3 = new Vaixell("8ª-TA-2-012-10", true, cli2, iot1);
-            Vaixell embar4 = new Vaixell("9ª-TA-2-013-16", true, cli2, motora1);
-            Vaixell embar5 = new Vaixell("16ª-TA-2-010-12", false, cli4, iot5);
+            
+            String dataDispo = "15-06-2016";
+            Date dataDisponible = sdf.parse(dataDispo);
+            Vaixell embar = new Vaixell(dataDisponible,"6ª-TA-2-010-12", false,0, cli, veler1);
+            Vaixell embar2 = new Vaixell(dataDisponible,"7ª-TA-2-011-12", true,100, cli2, veler1);
+            Vaixell embar3 = new Vaixell(dataDisponible,"8ª-TA-2-012-10", true,2000, cli2, iot1);
+            Vaixell embar4 = new Vaixell(dataDisponible,"9ª-TA-2-013-16", true,75, cli2, motora1);
+            Vaixell embar5 = new Vaixell(dataDisponible,"16ª-TA-2-010-12", false,5000, cli4, iot5);
 
             emp.afegirVaixell(embar);
             emp.afegirVaixell(embar2);
@@ -192,7 +195,14 @@ public class Main {
         }
     }
 
-    public void provesEmpresa(Empresa emp) throws LlistesException {
+    public void provesEmpresa(Empresa emp) throws LlistesException, ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String dataInici = "20-06-2016";
+        Date dataFi = sdf.parse(dataInici);
+        String dataInici2 = "15-06-2016";
+        Date dataIni = sdf.parse(dataInici2);
+        System.out.println("MODELS DISPONIBLES PER FETXA");
+        System.out.println(emp.llistaEmbDisponibles(dataIni,dataFi));
         System.out.println("MODELS PER INTERVAL DE PREU");
         System.out.println(emp.modelsPreu(10000, 100000));
         System.out.println("REPARACIONS ATURADES");
