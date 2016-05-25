@@ -94,4 +94,15 @@ public class Model implements Serializable{
         this.preu = preu;
     }
 
+    @Override
+    public String toString() {
+        return "Model{" + "idModel=" + idModel + ", marca=" + marca + ", model=" + model + ", manega=" + manega + ", eslora=" + eslora + ", calat=" + calat + ", preu=" + preu + '}';
+    }
+    
+    public String getJson(){
+            return "{" + "\"idModel\"" +":" + idModel + ", " + "\"marca\"" +":" +"\"" + marca +"\""+ ", "  + "\"model\"" +":" +"\""+ model +"\"" + ", " + "\"manega\"" +":" + manega + ", " + "\"eslora\"" +":"  + eslora + ", "+ "\"calat\"" +":"+ calat+ ", "+ "\"preu\"" +":"+ preu ;
+    
+    }
+    
+
 }

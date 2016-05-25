@@ -46,9 +46,16 @@ public class Motora extends Model {
         this.motorAuxiliar = motorAuxiliar;
     }
 
-    @Override
-    public String toString() {
-        return "Motora{" + "marca= " + marca + "model= " + model + "manega= " + manega + "eslora= " + eslora + "calat= " + calat + "preu=" + preu + "potencia=" + potencia + ", volumDiposit=" + volumDiposit + ", motorAuxiliar=" + motorAuxiliar + '}';
-    }
 
+        @Override
+    public String toString() {
+        return super.toString() + "Motora{" + "potencia=" + potencia + ", volumDiposit=" + volumDiposit + ", motorAuxiliar=" + motorAuxiliar + '}';
+    }
+    
+    
+    public String getJson(){
+            return super.getJson() + "\"potencia\"" +":" + potencia + ", " + "\"volumDiposit\"" +":"  + volumDiposit + ", "+ "\"motorAuxiliar\"" +":"+ motorAuxiliar+ '}';
+    }
+    
+    
 }
