@@ -1,5 +1,6 @@
 package com.BoatToni.Empresa;
 
+import com.BoatToni.Exceptions.EmpresaException;
 import com.BoatToni.Exceptions.LlistesException;
 import com.BoatToni.Operacions.Estat;
 import com.BoatToni.Operacions.Lloguer;
@@ -12,6 +13,7 @@ import com.BoatToni.Persona.Taller;
 import com.BoatToni.Vaixell.Model;
 import com.BoatToni.Vaixell.Vaixell;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -97,44 +99,84 @@ public class Empresa {
         llistaModels.remove(idModel);
     }
 
-    public void afegirVaixell(Vaixell vaixell) {
-        llistaVaixell.put(vaixell.getMatricula(), vaixell);
+    public void afegirVaixell(Vaixell vaixell) throws EmpresaException {
+        if (llistaVaixell.containsKey(vaixell.getMatricula())) {
+            throw new EmpresaException("No s'ha afegit el vaixell.");
+        } else {
+            llistaVaixell.put(vaixell.getMatricula(), vaixell);
+        }
     }
 
-    public void eliminarVaixell(String matricula) {
-        llistaVaixell.remove(matricula);
+    public void eliminarVaixell(String matricula) throws EmpresaException {
+        if (llistaVaixell.containsKey(matricula)) {
+            llistaVaixell.remove(matricula);
+        } else {
+            throw new EmpresaException("No s'ha borrat el vaixell.");
+        }
     }
 
-    public void afegirClient(Client client) {
-        llistaClient.put(client.getNumDocument(), client);
+    public void afegirClient(Client client) throws EmpresaException {
+        if (llistaClient.containsKey(client.getNumDocument())) {
+            throw new EmpresaException("No s'ha afegit el client.");
+        } else {
+            llistaClient.put(client.getNumDocument(), client);
+        }
     }
 
-    public void eliminarClient(String numDocument) {
-        llistaClient.remove(numDocument);
+    public void eliminarClient(String numDocument) throws EmpresaException {
+        if (llistaClient.containsKey(numDocument)) {
+            llistaClient.remove(numDocument);
+        } else {
+            throw new EmpresaException("No s'ha borrat el client.");
+        }
     }
 
-    public void afegirPatro(Patro patro) {
-        llistaPatro.put(patro.getNumDocument(), patro);
+    public void afegirPatro(Patro patro) throws EmpresaException {
+        if (llistaPatro.containsKey(patro.getNumDocument())) {
+            throw new EmpresaException("No s'ha afegit el patró.");
+        } else {
+            llistaPatro.put(patro.getNumDocument(), patro);
+        }
     }
 
-    public void eliminarPatro(String numDocument) {
-        llistaPatro.remove(numDocument);
+    public void eliminarPatro(String numDocument) throws EmpresaException {
+        if (llistaPatro.containsKey(numDocument)) {
+            llistaPatro.remove(numDocument);
+        } else {
+            throw new EmpresaException("No s'ha borrat el patró.");
+        }
     }
 
-    public void afegirComercial(Comercial comercial) {
-        llistaComercial.put(comercial.getNumDocument(), comercial);
+    public void afegirComercial(Comercial comercial) throws EmpresaException {
+        if (llistaComercial.containsKey(comercial.getNumDocument())) {
+            throw new EmpresaException("No s'ha afegit el comercial.");
+        } else {
+            llistaComercial.put(comercial.getNumDocument(), comercial);
+        }
     }
 
-    public void eliminarComercial(String numDocument) {
+    public void eliminarComercial(String numDocument) throws EmpresaException {
+        if(llistaComercial.containsKey(numDocument)){
         llistaComercial.remove(numDocument);
+        }else{
+            throw new EmpresaException("No s'ha borrat el comercial.");
+        }
     }
 
-    public void afegirTaller(Taller taller) {
+    public void afegirTaller(Taller taller) throws EmpresaException {
+        if (llistaTaller.containsKey(taller.getNumDocument())){
+            throw new EmpresaException("No s'ha afegit el treballador que fa feina al taller.");
+        }else {
         llistaTaller.put(taller.getNumDocument(), taller);
+        }
     }
 
-    public void eliminarTaller(String numDocument) {
+    public void eliminarTaller(String numDocument) throws EmpresaException {
+        if(llistaTaller.containsKey(numDocument)){
         llistaTaller.remove(numDocument);
+        }else{
+            throw new EmpresaException("No s'ha borrat el treballador que fa feina al taller");
+        }
     }
 
     public void afegirVenda(Venda venda) {
@@ -238,9 +280,28 @@ public class Empresa {
         }
     }
 
+
     @Override
     public String toString() {
         return "Empresa{" + "nom=" + nom + '}';
+    }
+
+
+    //Llista lloguer disponible entre dos dies.
+    public ArrayList llistaLloguerDies(Date dataInici, Date datafi) throws LlistesException {
+        ArrayList<Lloguer> llistatLloguerDies = new ArrayList();
+        if (llistaLloguer.isEmpty()) {
+            throw new LlistesException("Llista buida.");
+        } else {
+            for (Lloguer l : llistaLloguer.values()) {
+                if (l.getDataInici().after(datafi) && l.getDataFi().before(datafi)) {
+                    throw new LlistesException("Data incorrecte.");
+                } else {
+                    llistatLloguerDies.add(l);
+                }
+            }
+            return llistatLloguerDies;
+        }
     }
 
 }

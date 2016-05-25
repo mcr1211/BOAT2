@@ -5,6 +5,7 @@
  */
 package com.BoatToni.Operacions;
 
+import com.BoatToni.Exceptions.VendaException;
 import com.BoatToni.Persona.Client;
 import com.BoatToni.Persona.Comercial;
 import com.BoatToni.Vaixell.Vaixell;
@@ -22,10 +23,14 @@ public class Venda extends Operacio {
     private Client comprador;
     private Comercial comercial;
 
-    public Venda(Vaixell vaixell, Date dataVenda, double preu, Client comprador, Comercial comercial, int id, Estat estat) {
+    public Venda(Vaixell vaixell, Date dataVenda, double preu, Client comprador, Comercial comercial, int id, Estat estat) throws VendaException {
         super(estat);
         this.vaixell = vaixell;
-        this.dataVenda = dataVenda;
+        if("".equals(dataVenda)){
+            throw new VendaException("La venda necesita una data de realització.");
+        }else {
+            this.dataVenda = dataVenda;
+        }        
         this.preu = preu;
         this.comprador = comprador;
         this.comercial = comercial;

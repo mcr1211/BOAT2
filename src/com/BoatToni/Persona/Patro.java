@@ -5,6 +5,7 @@
  */
 package com.BoatToni.Persona;
 
+import com.BoatToni.Exceptions.PatroException;
 import com.BoatToni.Exceptions.PersonaException;
 
 /**
@@ -16,10 +17,18 @@ public class Patro extends Persona {
     private String titulacio;
     private double preuPatro;
 
-    public Patro(String titulacio, double preuPatro, String nom, String llinatges, String numDocument, Document document, String email, long telefon, String adreça) throws PersonaException {
+    public Patro(String titulacio, double preuPatro, String nom, String llinatges, String numDocument, Document document, String email, long telefon, String adreça) throws PersonaException, PatroException {
         super(nom, llinatges, numDocument, document, email, telefon, adreça);
-        this.titulacio = titulacio;
-        this.preuPatro = preuPatro;
+        if("".equals(titulacio)){
+            throw new PatroException("Falta un titol de patro.");
+        }else {
+            this.titulacio = titulacio;
+        }
+        if (preuPatro<=0){
+            throw new PatroException("El cost del patro és erroni.");
+        }else {
+            this.preuPatro = preuPatro;
+        }
     }
 
     public String getTitulacio() {

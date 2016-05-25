@@ -88,8 +88,12 @@ public class Lloguer extends Operacio {
         return dies;
     }
 
-    public void setPreuXDia(double preuXDia) {
-        this.preuXDia = preuXDia;
+    public void setPreuXDia(double preuXDia) throws LloguerException {
+        if(preuXDia<=0){
+            throw new LloguerException("Quantitat preu per dia introduïda erronea.");
+        }else{
+            this.preuXDia = preuXDia;
+        }
     }
 
     public void preuLloguer(){

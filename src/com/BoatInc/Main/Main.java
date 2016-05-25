@@ -7,6 +7,7 @@ package com.BoatInc.Main;
 
 import com.BoatToni.Empresa.Empresa;
 import com.BoatToni.Exceptions.EmpleatException;
+import com.BoatToni.Exceptions.EmpresaException;
 import com.BoatToni.Exceptions.LlistesException;
 import com.BoatToni.Exceptions.PersonaException;
 import com.BoatToni.Persona.Comercial;
@@ -26,7 +27,7 @@ import java.util.Date;
  */
 public class Main {
 
-    public static void inici() throws ParseException, PersonaException, EmpleatException {
+    public static void inici() throws ParseException, PersonaException, EmpleatException, EmpresaException {
         Empresa emp = new Empresa("BoatsInc");
 
         try {
@@ -123,7 +124,7 @@ public class Main {
         System.out.println(emp.llistaReparacionsPendets());
     }
     
-    public void main (String[] args) throws ParseException, PersonaException, EmpleatException{
+    public static void main(String[] args) throws ParseException, PersonaException, EmpleatException, EmpresaException{
         Main.inici();
     }
 

@@ -5,6 +5,8 @@
  */
 package com.BoatToni.TargetaCredit;
 
+import com.BoatToni.Exceptions.TargetaException;
+
 /**
  *
  * @author Toni Dalmau Martínez
@@ -16,11 +18,27 @@ public class TargetaCredit {
     private int any;
     private int codiVerificacio;
 
-    public TargetaCredit(int numero, int mes, int any, int codiVerificacio) {
-        this.numero = numero;
-        this.mes = mes;
-        this.any = any;
-        this.codiVerificacio = codiVerificacio;
+    public TargetaCredit(int numero, int mes, int any, int codiVerificacio) throws TargetaException {
+        if ("".equals(numero)){
+            throw new TargetaException("Posa un numero de targeta");
+        }else {
+            this.numero = numero;
+        }
+        if ("".equals(mes)){
+            throw new TargetaException("Posa un mes amb dos digits");
+        }else {
+            this.mes = mes;
+        }
+        if("".equals(any)){
+            throw new TargetaException("Posa un any amb dos digits");
+        }else {
+            this.any = any;
+        }
+        if("".equals(codiVerificacio)){
+            throw new TargetaException("Posa un codi de verificacio de la targeta de tres digits.");
+        }else {
+            this.codiVerificacio = codiVerificacio;
+        }        
     }
 
     public int getNumero() {
