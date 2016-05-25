@@ -156,51 +156,75 @@ public class Empresa {
     }
 
     public void eliminarComercial(String numDocument) throws EmpresaException {
-        if(llistaComercial.containsKey(numDocument)){
-        llistaComercial.remove(numDocument);
-        }else{
+        if (llistaComercial.containsKey(numDocument)) {
+            llistaComercial.remove(numDocument);
+        } else {
             throw new EmpresaException("No s'ha borrat el comercial.");
         }
     }
 
     public void afegirTaller(Taller taller) throws EmpresaException {
-        if (llistaTaller.containsKey(taller.getNumDocument())){
+        if (llistaTaller.containsKey(taller.getNumDocument())) {
             throw new EmpresaException("No s'ha afegit el treballador que fa feina al taller.");
-        }else {
-        llistaTaller.put(taller.getNumDocument(), taller);
+        } else {
+            llistaTaller.put(taller.getNumDocument(), taller);
         }
     }
 
     public void eliminarTaller(String numDocument) throws EmpresaException {
-        if(llistaTaller.containsKey(numDocument)){
-        llistaTaller.remove(numDocument);
-        }else{
+        if (llistaTaller.containsKey(numDocument)) {
+            llistaTaller.remove(numDocument);
+        } else {
             throw new EmpresaException("No s'ha borrat el treballador que fa feina al taller");
         }
     }
 
-    public void afegirVenda(Venda venda) {
-        llistaVenda.put(venda.getId(), venda);
+    public void afegirVenda(Venda venda) throws EmpresaException {
+        if (llistaVenda.containsKey(venda.getId())) {
+            throw new EmpresaException("No s'ha afegit la venda.");
+        } else {
+            llistaVenda.put(venda.getId(), venda);
+        }
     }
 
-    public void eliminarVenda(int id) {
-        llistaVenda.remove(id);
+    public void eliminarVenda(int id) throws EmpresaException {
+        if (llistaVenda.containsKey(id)) {
+            llistaVenda.remove(id);
+        } else {
+            throw new EmpresaException("No s'ha borrat la venda.");
+        }
     }
 
-    public void afegirReparacio(Reparacio reparacio) {
-        llistaReparacions.put(reparacio.getId(), reparacio);
+    public void afegirReparacio(Reparacio reparacio) throws EmpresaException {
+        if (llistaReparacions.containsKey(reparacio.getId())) {
+            throw new EmpresaException("No s'ha afegit la reparacio.");
+        } else {
+            llistaReparacions.put(reparacio.getId(), reparacio);
+        }
     }
 
-    public void eliminarReparacio(int id) {
-        llistaReparacions.remove(id);
+    public void eliminarReparacio(int id) throws EmpresaException {
+        if (llistaReparacions.containsKey(id)) {
+            llistaReparacions.remove(id);
+        } else {
+            throw new EmpresaException("No s'ha borrat la reparacio.");
+        }
     }
 
-    public void afegirLloguer(Lloguer lloguer) {
-        llistaLloguer.put(lloguer.getId(), lloguer);
+    public void afegirLloguer(Lloguer lloguer) throws EmpresaException {
+        if (llistaLloguer.containsKey(lloguer.getId())) {
+            throw new EmpresaException("No s'ha afegit el lloguer.");
+        } else {
+            llistaLloguer.put(lloguer.getId(), lloguer);
+        }
     }
 
-    public void eliminarLloguer(int id) {
+    public void eliminarLloguer(int id) throws EmpresaException {
+        if (llistaLloguer.containsKey(id)){
         llistaLloguer.remove(id);
+        }else {
+            throw new EmpresaException("No s'ha borrat el lloguer.");
+        }
     }
 
     //Llistar tots els models.

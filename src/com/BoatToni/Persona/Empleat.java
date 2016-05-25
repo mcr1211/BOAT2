@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.BoatToni.Persona;
 
 import com.BoatToni.Exceptions.EmpleatException;
@@ -22,7 +17,7 @@ public class Empleat extends Persona {
         super(nom, llinatges, numDocument, document, email, telefon, adreça);
         this.dataAlta = dataAlta;
         if (souEmpleat < 600) {
-            throw new EmpleatException();
+            throw new EmpleatException("El sou es massa baix.");
         } else {
             this.souEmpleat = souEmpleat;
         }
@@ -33,12 +28,11 @@ public class Empleat extends Persona {
     }
 
     public void setDataAlta(Date dataAlta) throws EmpleatException {
-        if(dataAlta==null){
-            throw new EmpleatException();
-        }else{
+        if (dataAlta == null) {
+            throw new EmpleatException("Has de posar el dia que va començar a fer feina aquest empleat.");
+        } else {
             this.dataAlta = dataAlta;
         }
-        
     }
 
     public double getSouEmpleat() {
@@ -48,5 +42,4 @@ public class Empleat extends Persona {
     public void setSouEmpleat(double souEmpleat) {
         this.souEmpleat = souEmpleat;
     }
-
 }

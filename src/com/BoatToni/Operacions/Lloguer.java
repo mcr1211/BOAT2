@@ -24,6 +24,7 @@ public class Lloguer extends Operacio {
     private double preuXDia;
     private Patro patro;
     private double preuLloguer;
+    private boolean ppatro;
 
     public Lloguer(Date dataInici, Date dataFi, Client client, Vaixell vaixell, double preuXDia, Patro patro, double preuLloguer, int id, Estat estat) {
         super(estat);
@@ -34,6 +35,18 @@ public class Lloguer extends Operacio {
         this.preuXDia = preuXDia;
         this.patro = patro;
         this.preuLloguer = preuLloguer;
+    }
+
+    public Lloguer(Date dataInici, Date dataFi, Client client, Vaixell vaixell, double preuXDia, Patro patro, double preuLloguer, boolean ppatro, Estat estat) {
+        super(estat);
+        this.dataInici = dataInici;
+        this.dataFi = dataFi;
+        this.client = client;
+        this.vaixell = vaixell;
+        this.preuXDia = preuXDia;
+        this.patro = patro;
+        this.preuLloguer = preuLloguer;
+        this.ppatro = ppatro;
     }
 
     public Date getDataInici() {
@@ -64,9 +77,13 @@ public class Lloguer extends Operacio {
         return preuLloguer;
     }
 
+    public boolean isPpatro() {
+        return ppatro;
+    }
+    
     public void setDataInici(Date dataInici) throws LloguerException {
         if (dataInici.after(dataFi)) {
-            throw new LloguerException();
+            throw new LloguerException("La data d'inici es erronea.");
         } else {
             this.dataInici = dataInici;
         }
@@ -74,10 +91,14 @@ public class Lloguer extends Operacio {
 
     public void setDataFi(Date dataFi) throws LloguerException {
         if (dataFi.before(dataInici)) {
-            throw new LloguerException();
+            throw new LloguerException("La data fi es erronea.");
         } else {
             this.dataFi = dataFi;
         }
+    }
+
+    public void setPpatro(boolean ppatro) {
+        this.ppatro = ppatro;
     }
 
     public int diesLloguer(Date inici, Date fi) {
@@ -89,16 +110,24 @@ public class Lloguer extends Operacio {
     }
 
     public void setPreuXDia(double preuXDia) throws LloguerException {
-        if(preuXDia<=0){
+        if (preuXDia <= 0) {
             throw new LloguerException("Quantitat preu per dia introduïda erronea.");
-        }else{
+        } else {
             this.preuXDia = preuXDia;
         }
     }
 
-    public void preuLloguer(){
+    public void preuLloguer() {
         int dies = diesLloguer(dataInici, dataFi);
-        preuLloguer = dies * preuXDia;  
+        if (ppatro) {
+            preuLloguer = dies * preuXDia + patro.getPreuPatro();
+        } else {
+            preuLloguer = dies * preuXDia;
+        }
+    }
+    
+    public double mostrarPreuLloguer(){
+        return preuLloguer;
     }
 
     @Override

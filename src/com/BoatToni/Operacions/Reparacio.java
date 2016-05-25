@@ -18,7 +18,7 @@ import java.util.Date;
  */
 public class Reparacio extends Operacio {
 
-    private Client propietari;
+    private Client amo;
     private Vaixell vaixell;
     private ArrayList<Taller> treballadors;
     private String llocReparacio;
@@ -29,7 +29,7 @@ public class Reparacio extends Operacio {
 
     public Reparacio(Client propietari, Vaixell vaixell, String llocReparacio, Date dataInici, Date dataPrevFinal, String descripcio, double preuPresupost, int id, Estat estat) throws ReparacioException {
         super(estat);
-        this.propietari = propietari;
+        this.amo = amo;
         this.vaixell = vaixell;
         this.treballadors = treballadors;
         this.llocReparacio = llocReparacio;
@@ -105,7 +105,7 @@ public class Reparacio extends Operacio {
 
     @Override
     public String toString() {
-        return "Reparacio{" + "propietari=" + propietari + ", vaixell=" + vaixell + ", treballadors=" + treballadors + ", llocReparacio=" + llocReparacio + ", dataInici=" + dataInici + ", dataPrevFinal=" + dataPrevFinal + ", descripcio=" + descripcio + ", preuFactura=" + preuFactura + '}';
+        return "Reparacio{" + "propietari=" + amo + ", vaixell=" + vaixell + ", treballadors=" + treballadors + ", llocReparacio=" + llocReparacio + ", dataInici=" + dataInici + ", dataPrevFinal=" + dataPrevFinal + ", descripcio=" + descripcio + ", preuFactura=" + preuFactura + '}';
     }
 
 }
