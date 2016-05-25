@@ -7,6 +7,7 @@ package com.BoatToni.Persona;
 
 import com.BoatToni.TargetaCredit.TargetaCredit;
 import com.BoatToni.Exceptions.PersonaException;
+import java.io.Serializable;
 
 /**
  *

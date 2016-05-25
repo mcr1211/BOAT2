@@ -5,11 +5,13 @@
  */
 package com.BoatToni.Vaixell;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Toni Dalmau Martínez
  */
-public class Model {
+public class Model implements Serializable{
 
     protected int idModel;
     protected String marca;

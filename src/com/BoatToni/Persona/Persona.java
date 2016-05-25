@@ -1,12 +1,13 @@
 package com.BoatToni.Persona;
 
 import com.BoatToni.Exceptions.PersonaException;
+import java.io.Serializable;
 
 /**
  *
  * @author Toni Dalmau Martínez
  */
-public class Persona {
+public class Persona implements Serializable{
 
     protected String nom;
     protected String llinatges;

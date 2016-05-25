@@ -6,12 +6,13 @@
 package com.BoatToni.Vaixell;
 
 import com.BoatToni.Persona.Client;
+import java.io.Serializable;
 
 /**
  *
  * @author Toni Dalmau Martínez
  */
-public class Vaixell {
+public class Vaixell implements Serializable{
     
     private String matricula;
     private boolean llogar;

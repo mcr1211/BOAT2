@@ -9,13 +9,14 @@ import com.BoatToni.Exceptions.VendaException;
 import com.BoatToni.Persona.Client;
 import com.BoatToni.Persona.Comercial;
 import com.BoatToni.Vaixell.Vaixell;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Toni Dalmau Martínez
  */
-public class Venda extends Operacio {
+public class Venda extends Operacio implements Serializable{
     
     private Vaixell vaixell;
     private Date dataVenda;

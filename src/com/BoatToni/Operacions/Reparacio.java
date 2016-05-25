@@ -9,6 +9,7 @@ import com.BoatToni.Exceptions.ReparacioException;
 import com.BoatToni.Persona.Client;
 import com.BoatToni.Persona.Taller;
 import com.BoatToni.Vaixell.Vaixell;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 

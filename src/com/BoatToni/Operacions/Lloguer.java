@@ -9,6 +9,7 @@ import com.BoatToni.Exceptions.LloguerException;
 import com.BoatToni.Persona.Client;
 import com.BoatToni.Persona.Patro;
 import com.BoatToni.Vaixell.Vaixell;
+import java.io.Serializable;
 import java.util.Date;
 
 /**

@@ -6,7 +6,6 @@
 package com.BoatInc.Main;
 
 import com.BoatInc.Main.json.utilitats.EinesJson;
-import com.BoatInc.Main.json.utilitats.EinesObjectStream;
 import com.BoatToni.Empresa.Empresa;
 import com.BoatToni.Exceptions.EmpleatException;
 import com.BoatToni.Exceptions.EmpresaException;
@@ -24,7 +23,13 @@ import com.BoatToni.Vaixell.Iot;
 import com.BoatToni.Vaixell.Motora;
 import com.BoatToni.Vaixell.Vaixell;
 import com.BoatToni.Vaixell.Veler;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -65,7 +70,7 @@ public class Main {
 //            emp.afegirComercial(venedor3);
 //            emp.afegirComercial(venedor4);
 //            emp.afegirComercial(venedor5);
-//            emp.getLlistaComercial();
+            
 
             // **EMPLEATS DE TALLER**
             Taller tecnic = new Taller("Biel", "Recio", "43194116Y", Document.DNI, "bielrecio@gmail.com", 620354388, "C/Sol nº50", d1, 900, Habilitat.ELECTRICITAT);
@@ -170,12 +175,21 @@ public class Main {
         return emp;
     }
 
-    public void llegeixFitxer(String desti) throws IOException {
-        EinesObjectStream.llegeixObjecte(desti);
+    public static void escriuObjecte(String objectDesti, Empresa obj) throws IOException {
+        try (ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(objectDesti)))) {
+            out.writeObject(obj);
+        }
+
     }
 
-    public void guardarFitxer(String desti) throws IOException {
-        EinesObjectStream.escriuObjecte(desti, this);
+    public static void llegeixObjecte(String desti) throws IOException, ClassNotFoundException {
+        Object empresa = null;
+        try (ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(desti)))) {
+
+            empresa = in.readObject();
+            
+            in.close();
+        }
     }
 
     public void provesEmpresa(Empresa emp) throws LlistesException {
@@ -187,10 +201,13 @@ public class Main {
         System.out.println(emp.llistaReparacionsPendets());
     }
 
-    public static void main(String[] args) throws ParseException, PersonaException, EmpleatException, EmpresaException, LlistesException, ReparacioException {
-        String desti = "C:\\Users\\Elio\\Desktop\\Elio Classe\\Programació\\objecte.Desti";
+    public static void main(String[] args) throws ParseException, PersonaException, EmpleatException, EmpresaException, LlistesException, ReparacioException, IOException, ClassNotFoundException {
+        String desti = "C:\\Users\\Elio\\Desktop\\BoatInc2\\BOAT2\\src\\com\\ArxiusBoatInc\\BoatInc.odt";
         Main main = new Main();
+        
         Empresa boat = main.inici();
+        Main.escriuObjecte(desti, boat);
+        Main.llegeixObjecte(desti);
         main.provesEmpresa(boat);
     }
 

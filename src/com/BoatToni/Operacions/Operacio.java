@@ -5,11 +5,13 @@
  */
 package com.BoatToni.Operacions;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Toni Dalmau Martínez
  */
-public class Operacio {
+public class Operacio implements Serializable {
 
     protected int id;
     protected Estat estat;

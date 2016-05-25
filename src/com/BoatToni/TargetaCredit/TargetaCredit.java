@@ -6,12 +6,13 @@
 package com.BoatToni.TargetaCredit;
 
 import com.BoatToni.Exceptions.TargetaException;
+import java.io.Serializable;
 
 /**
  *
  * @author Toni Dalmau Martínez
  */
-public class TargetaCredit {
+public class TargetaCredit implements Serializable{
 
     private int numero;
     private int mes;

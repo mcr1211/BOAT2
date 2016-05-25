@@ -12,6 +12,7 @@ import com.BoatToni.Persona.Patro;
 import com.BoatToni.Persona.Taller;
 import com.BoatToni.Vaixell.Model;
 import com.BoatToni.Vaixell.Vaixell;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -22,7 +23,7 @@ import java.util.Map;
  *
  * @author Toni Dalmau Martínez
  */
-public class Empresa {
+public class Empresa implements Serializable {
 
     private String nom;
     private HashMap<Integer, Model> llistaModels;
@@ -147,14 +148,11 @@ public class Empresa {
         }
     }
 
-    
-    
-    
     public void afegirComercial(Comercial comercial) throws EmpresaException {
 //        if (llistaComercial.containsKey(comercial.getNumDocument())) {
 //            throw new EmpresaException("No s'ha afegit el comercial.");
 //        } else {
-            llistaComercial.put(comercial.getNumDocument(), comercial);
+        llistaComercial.put(comercial.getNumDocument(), comercial);
 //        }
     }
 
@@ -223,9 +221,9 @@ public class Empresa {
     }
 
     public void eliminarLloguer(int id) throws EmpresaException {
-        if (llistaLloguer.containsKey(id)){
-        llistaLloguer.remove(id);
-        }else {
+        if (llistaLloguer.containsKey(id)) {
+            llistaLloguer.remove(id);
+        } else {
             throw new EmpresaException("No s'ha borrat el lloguer.");
         }
     }
@@ -234,6 +232,30 @@ public class Empresa {
     public HashMap<Integer, Model> totsModels() {
         return llistaModels;
     }
+
+//    public ArrayList<Vaixell> llistaEmbDisponibles(Date inici, Date altre) {
+//        ArrayList<Vaixell> lista = new ArrayList<>();
+//        for (Vaixell i : llistaVaixell.values()) {
+//            if (i.isLlogar()) {
+//                lista.add(i);
+//            }
+//        }
+//        if (!llistaLloguer.isEmpty()) {
+//            for (Lloguer k : llistaLloguer.values()) {
+//                lista.remove(k);
+//            }
+//
+//        }
+//        for (Vaixell i : llistaVaixell.values()) {
+//            if (i.isLlogar()) {
+//                if (i.getDisponible().after(inici) && i.getDisponible().before(altre)) {
+//                } else {
+//                    lista.remove(i);
+//                }
+//            }
+//        }
+//        return lista;
+//    }
 
     //Llistar models per tipus de model.
     public ArrayList<Model> tipusModels(Model tipus) throws LlistesException {
@@ -307,12 +329,10 @@ public class Empresa {
         }
     }
 
-
     @Override
     public String toString() {
         return "Empresa{" + "nom=" + nom + '}';
     }
-
 
     //Llista lloguer disponible entre dos dies.
     public ArrayList llistaLloguerDies(Date dataInici, Date datafi) throws LlistesException {
