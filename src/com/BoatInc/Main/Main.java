@@ -54,18 +54,18 @@ public class Main {
             Date d5 = sdf.parse(data4);
 
             //**EMPLEATS COMERCIALS
-            Comercial venedor = new Comercial("Pau", "Ramis", "43111555K", Document.DNI, "pramis@gmail.com", 666999888, "C/Sol nº1", d2, 1200, 10);
-            Comercial venedor2 = new Comercial("Barbara", "Thomas", "42222222K", Document.DNI, "lamasguaoa@gmail.com", 666199888, "C/Sol nº2", d2, 1200, 10);
-            Comercial venedor3 = new Comercial("María", "Bennàssar", "43121555K", Document.DNI, "bennassar@gmail.com", 767979787, "C/Sol nº3", d2, 1200, 10);
-            Comercial venedor4 = new Comercial("Pep", "Fiol", "66111555K", Document.DNI, "pep87@gmail.com", 666999828, "C/Lluna nº1", d2, 1200, 10);
-            Comercial venedor5 = new Comercial("Tomeu", "Terrassa", "44454555K", Document.DNI, "tomeut@gmail.com", 676999448, "C/Major nº4", d2, 1200, 10);
-
-            emp.afegirComercial(venedor);
-            emp.afegirComercial(venedor2);
-            emp.afegirComercial(venedor3);
-            emp.afegirComercial(venedor4);
-            emp.afegirComercial(venedor5);
-            emp.getLlistaComercial();
+//            Comercial venedor = new Comercial("Pau", "Ramis", "43111555K", Document.DNI, "pramis@gmail.com", 666999888, "C/Sol nº1", d2, 1200, 10);
+//            Comercial venedor2 = new Comercial("Barbara", "Thomas", "42222222K", Document.DNI, "lamasguaoa@gmail.com", 666199888, "C/Sol nº2", d2, 1200, 10);
+//            Comercial venedor3 = new Comercial("María", "Bennàssar", "43121555K", Document.DNI, "bennassar@gmail.com", 767979787, "C/Sol nº3", d2, 1200, 10);
+//            Comercial venedor4 = new Comercial("Pep", "Fiol", "66111555K", Document.DNI, "pep87@gmail.com", 666999828, "C/Lluna nº1", d2, 1200, 10);
+//            Comercial venedor5 = new Comercial("Tomeu", "Terrassa", "44454555K", Document.DNI, "tomeut@gmail.com", 676999448, "C/Major nº4", d2, 1200, 10);
+//
+//            emp.afegirComercial(venedor);
+//            emp.afegirComercial(venedor2);
+//            emp.afegirComercial(venedor3);
+//            emp.afegirComercial(venedor4);
+//            emp.afegirComercial(venedor5);
+//            emp.getLlistaComercial();
 
             // **EMPLEATS DE TALLER**
             Taller tecnic = new Taller("Biel", "Recio", "43194116Y", Document.DNI, "bielrecio@gmail.com", 620354388, "C/Sol nº50", d1, 900, Habilitat.ELECTRICITAT);
@@ -130,10 +130,10 @@ public class Main {
             emp.afegirClient(cli5);
 
             Vaixell embar = new Vaixell("6ª-TA-2-010-12", false, cli, veler1);
-            Vaixell embar2 = new Vaixell("6ª-TA-2-011-12", true, cli2, veler1);
-            Vaixell embar3 = new Vaixell("6ª-TA-2-012-10", true, cli2, iot1);
-            Vaixell embar4 = new Vaixell("6ª-TA-2-013-16", true, cli2, motora1);
-            Vaixell embar5 = new Vaixell("6ª-TA-2-010-12", false, cli4, iot5);
+            Vaixell embar2 = new Vaixell("7ª-TA-2-011-12", true, cli2, veler1);
+            Vaixell embar3 = new Vaixell("8ª-TA-2-012-10", true, cli2, iot1);
+            Vaixell embar4 = new Vaixell("9ª-TA-2-013-16", true, cli2, motora1);
+            Vaixell embar5 = new Vaixell("16ª-TA-2-010-12", false, cli4, iot5);
 
             emp.afegirVaixell(embar);
             emp.afegirVaixell(embar2);
@@ -146,7 +146,23 @@ public class Main {
             String dataFinal = "10-06-2016";
             Date dataFi = sdf.parse(dataFinal);
             Reparacio rep = new Reparacio(cli, embar, "drassanes", dataIni, "Forat a sa quilla", 10000, 1, Estat.PENDENT);
-
+            String dataInici2 = "2-05-2016";
+            Date dataIni2 = sdf.parse(dataInici);
+            Reparacio rep2 = new Reparacio(cli2, embar2, "Taller BoatInc", dataIni, "Llija, pintar y pulir", 700, 2, Estat.ATURAT);
+             String dataInici3 = "22-05-2016";
+            Date dataIni3 = sdf.parse(dataInici);
+            Reparacio rep3 = new Reparacio(cli2, embar3, "Taller BoatInc", dataIni, "Motor", 10000, 3, Estat.PENDENT);
+            Reparacio rep4 = new Reparacio(cli, embar, "Aigua", dataIni, "Reparació vela", 10000, 4, Estat.PENDENT);
+            Reparacio rep5 = new Reparacio(cli, embar5, "Aigua", dataIni, "Canvi sistema GPS", 600, 5, Estat.ATURAT);
+            
+             emp.afegirReparacio(rep);
+             emp.afegirReparacio(rep2);
+             emp.afegirReparacio(rep3);
+             emp.afegirReparacio(rep4);
+             emp.afegirReparacio(rep5);
+            
+            
+            
         } catch (EmpleatException ex) {
             System.out.println(ex.getMessage());
         }

@@ -151,11 +151,11 @@ public class Empresa {
     
     
     public void afegirComercial(Comercial comercial) throws EmpresaException {
-        if (llistaComercial.containsKey(comercial.getNumDocument())) {
-            throw new EmpresaException("No s'ha afegit el comercial.");
-        } else {
+//        if (llistaComercial.containsKey(comercial.getNumDocument())) {
+//            throw new EmpresaException("No s'ha afegit el comercial.");
+//        } else {
             llistaComercial.put(comercial.getNumDocument(), comercial);
-        }
+//        }
     }
 
     public void eliminarComercial(String numDocument) throws EmpresaException {
@@ -268,7 +268,7 @@ public class Empresa {
     public ArrayList llistaReparacionsPendets() throws LlistesException {
         ArrayList<Reparacio> llistaPendent = new ArrayList();
         if (llistaReparacions.isEmpty()) {
-            throw new LlistesException();
+            throw new LlistesException("La llista està buida");
         } else {
             for (Reparacio r : llistaReparacions.values()) {
                 if (r.getEstat() == Estat.PENDENT) {
@@ -283,7 +283,7 @@ public class Empresa {
     public ArrayList llistaReparacionsAturades() throws LlistesException {
         ArrayList<Reparacio> llistaAturades = new ArrayList();
         if (llistaReparacions.isEmpty()) {
-            throw new LlistesException();
+            throw new LlistesException("La llista està buida");
         } else {
             for (Reparacio r : llistaReparacions.values()) {
                 if (r.getEstat() == Estat.ATURAT) {
@@ -298,7 +298,7 @@ public class Empresa {
     public ArrayList llistatReparacions() throws LlistesException {
         ArrayList<Reparacio> llistatReparacions = new ArrayList();
         if (llistaReparacions.isEmpty()) {
-            throw new LlistesException();
+            throw new LlistesException("La llista està buida");
         } else {
             for (Reparacio r : llistaReparacions.values()) {
                 llistatReparacions.add(r);
