@@ -36,7 +36,14 @@ public class ProvesLlistaClient {
         
     }
     
-    
+    @Test
+    public void recuperarClient() throws PersonaException, EmpresaException{
+      Empresa test = new Empresa("Test");
+  
+      Client cli = new Client("Test","Test","11111199J",Document.DNI,"test@test.com",666223311,"C/test nº1","ES00223366");
+      test.afegirClient(cli);
+      assertEquals("Ha anat bé",cli,test.mostrarClient("11111199J"));
+    }
     
     @Test(expected = EmpresaException.class)
     public void afegirClientException() throws PersonaException, EmpresaException{
