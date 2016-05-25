@@ -5,13 +5,14 @@
  */
 package com.BoatToni.Vaixell;
 
+import com.BoatInc.Main.json.interficies.ConvertibleJson;
 import java.io.Serializable;
 
 /**
  *
  * @author Toni Dalmau Martínez
  */
-public class Model implements Serializable{
+public class Model implements Serializable,ConvertibleJson{
 
     protected int idModel;
     protected String marca;
