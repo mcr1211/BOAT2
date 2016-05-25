@@ -61,17 +61,17 @@ public class Main {
             Date d5 = sdf.parse(data4);
 
             //**EMPLEATS COMERCIALS
-//            Comercial venedor = new Comercial("Pau", "Ramis", "43111555K", Document.DNI, "pramis@gmail.com", 666999888, "C/Sol nº1", d2, 1200, 10);
-//            Comercial venedor2 = new Comercial("Barbara", "Thomas", "42222222K", Document.DNI, "lamasguaoa@gmail.com", 666199888, "C/Sol nº2", d2, 1200, 10);
-//            Comercial venedor3 = new Comercial("María", "Bennàssar", "43121555K", Document.DNI, "bennassar@gmail.com", 767979787, "C/Sol nº3", d2, 1200, 10);
-//            Comercial venedor4 = new Comercial("Pep", "Fiol", "66111555K", Document.DNI, "pep87@gmail.com", 666999828, "C/Lluna nº1", d2, 1200, 10);
-//            Comercial venedor5 = new Comercial("Tomeu", "Terrassa", "44454555K", Document.DNI, "tomeut@gmail.com", 676999448, "C/Major nº4", d2, 1200, 10);
-//
-//            emp.afegirComercial(venedor);
-//            emp.afegirComercial(venedor2);
-//            emp.afegirComercial(venedor3);
-//            emp.afegirComercial(venedor4);
-//            emp.afegirComercial(venedor5);
+            Comercial venedor = new Comercial("Pau", "Ramis", "43111555K", Document.DNI, "pramis@gmail.com", 666999888, "C/Sol nº1", d2, 1200, 10);
+            Comercial venedor2 = new Comercial("Barbara", "Thomas", "42222222K", Document.DNI, "lamasguaoa@gmail.com", 666199888, "C/Sol nº2", d2, 1200, 10);
+            Comercial venedor3 = new Comercial("María", "Bennàssar", "43121555K", Document.DNI, "bennassar@gmail.com", 767979787, "C/Sol nº3", d2, 1200, 10);
+            Comercial venedor4 = new Comercial("Pep", "Fiol", "66111555K", Document.DNI, "pep87@gmail.com", 666999828, "C/Lluna nº1", d2, 1200, 10);
+            Comercial venedor5 = new Comercial("Tomeu", "Terrassa", "44454555K", Document.DNI, "tomeut@gmail.com", 676999448, "C/Major nº4", d2, 1200, 10);
+
+            emp.afegirComercial(venedor);
+            emp.afegirComercial(venedor2);
+            emp.afegirComercial(venedor3);
+            emp.afegirComercial(venedor4);
+            emp.afegirComercial(venedor5);
             
 
             // **EMPLEATS DE TALLER**
@@ -204,6 +204,7 @@ public class Main {
     }
 
     public void provesEmpresa(Empresa emp) throws LlistesException, ParseException {
+        Veler veler6 = new Veler(7, 3, 2, "Jena", "La Some", 20, 10, 9, 2007);
         System.out.println(emp.getLlistaLloguer());
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String dataInici = "20-06-2016";
@@ -212,7 +213,8 @@ public class Main {
         Date dataIni = sdf.parse(dataInici2);
         String data1 = "02-05-2016";
         Date d2 = sdf.parse(data1);
-        
+        System.out.println("MOSTRAR JSON D'UN MODEL");
+        System.out.println(veler6.getJson());
         System.out.println("MODELS DISPONIBLES PER FETXA");
         System.out.println(emp.llistaEmbDisponibles(d2,dataFi));
         System.out.println("MODELS PER INTERVAL DE PREU");
