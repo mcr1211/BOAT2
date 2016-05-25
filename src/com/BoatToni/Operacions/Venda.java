@@ -24,7 +24,7 @@ public class Venda extends Operacio implements Serializable{
     private Client comprador;
     private Comercial comercial;
 
-    public Venda(Vaixell vaixell, Date dataVenda, double preu, Client comprador, Comercial comercial, int id, Estat estat) throws VendaException {
+    public Venda(Vaixell vaixell, Date dataVenda, double preu, Client comprador, Comercial comercial, Estat estat) throws VendaException {
         super(estat);
         this.vaixell = vaixell;
         if("".equals(dataVenda)){

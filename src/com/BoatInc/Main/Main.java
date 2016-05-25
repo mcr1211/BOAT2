@@ -12,9 +12,11 @@ import com.BoatToni.Exceptions.EmpresaException;
 import com.BoatToni.Exceptions.LlistesException;
 import com.BoatToni.Exceptions.PersonaException;
 import com.BoatToni.Exceptions.ReparacioException;
+import com.BoatToni.Exceptions.VendaException;
 import com.BoatToni.Operacions.Estat;
 import com.BoatToni.Operacions.Lloguer;
 import com.BoatToni.Operacions.Reparacio;
+import com.BoatToni.Operacions.Venda;
 import com.BoatToni.Persona.Client;
 import com.BoatToni.Persona.Comercial;
 import com.BoatToni.Persona.Document;
@@ -44,7 +46,7 @@ public class Main {
 
     Empresa emp;
 
-    public Empresa inici() throws ParseException, PersonaException, EmpleatException, EmpresaException, ReparacioException {
+    public Empresa inici() throws ParseException, PersonaException, EmpleatException, EmpresaException, ReparacioException, VendaException {
         Empresa emp = new Empresa("BoatsInc");
 
         try {
@@ -174,10 +176,12 @@ public class Main {
              emp.afegirReparacio(rep5);
             
              Lloguer lloguer1 = new Lloguer(d1, d5, cli, embar2, 2800,null,235, 1, Estat.ACABAT);
-            
-             
-             
              emp.afegirLloguer(lloguer1);
+             
+             Venda venda1 = new Venda(embar,d2,0.0,cli,venedor,Estat.INICIAT);
+             emp.afegirVenda(venda1);
+             
+             
 
         } catch (EmpleatException ex) {
             System.out.println(ex.getMessage());
@@ -203,9 +207,7 @@ public class Main {
         }
     }
 
-    public void provesEmpresa(Empresa emp) throws LlistesException, ParseException {
-        Veler veler6 = new Veler(7, 3, 2, "Jena", "La Some", 20, 10, 9, 2007);
-        System.out.println(emp.getLlistaLloguer());
+    public void provesEmpresa(Empresa emp) throws LlistesException, ParseException, PersonaException, EmpleatException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String dataInici = "20-06-2016";
         Date dataFi = sdf.parse(dataInici);
@@ -213,8 +215,21 @@ public class Main {
         Date dataIni = sdf.parse(dataInici2);
         String data1 = "02-05-2016";
         Date d2 = sdf.parse(data1);
-        System.out.println("MOSTRAR JSON D'UN MODEL");
-        System.out.println(veler6.getJson());
+        Client cli2 = new Client("Boat", "Inc", "11555666B", Document.DNI, "", 620154010, "C/Margalida nº2", "ES0020368743");
+        Veler veler6 = new Veler(7, 3, 2, "Jena", "La Some", 20, 10, 9, 2007);
+        Vaixell embar = new Vaixell(d2,"6ª-TA-2-010-12", false,0, cli2, veler6);
+        Comercial venedor = new Comercial("Pau", "Ramis", "43111555K", Document.DNI, "pramis@gmail.com", 666999888, "C/Sol nº1", d2, 1200, 10);
+        Taller tecnic = new Taller("Gori", "Recio", "43194886Y", Document.DNI, "bielrecio@gmail.com", 620354388, "C/Sol nº50", d2, 900, Habilitat.ELECTRICITAT);
+        System.out.println(emp.getLlistaLloguer());
+        
+//        System.out.println("MOSTRAR JSON D'UN MODEL");
+//        System.out.println(veler6.getJson());
+        System.out.println("FER NÒMINA Tècnic");
+        System.out.println(tecnic.ferNomina(tecnic));
+        System.out.println("FER NÒMINA Comercial");
+        System.out.println(venedor.ferNomina(emp, venedor, veler6));
+        System.out.println("LLISTA TIPUS D'EMBARCACIÓ");
+        System.out.println(emp.tipusModels(veler6));
         System.out.println("MODELS DISPONIBLES PER FETXA");
         System.out.println(emp.llistaEmbDisponibles(d2,dataFi));
         System.out.println("MODELS PER INTERVAL DE PREU");
@@ -230,7 +245,7 @@ public class Main {
 
     }
 
-    public static void main(String[] args) throws ParseException, PersonaException, EmpleatException, EmpresaException, LlistesException, ReparacioException, IOException, ClassNotFoundException {
+    public static void main(String[] args) throws ParseException, PersonaException, EmpleatException, EmpresaException, LlistesException, ReparacioException, IOException, ClassNotFoundException, VendaException {
         String desti = "C:\\Users\\Elio\\Desktop\\BoatInc2\\BOAT2\\src\\com\\ArxiusBoatInc\\BoatInc.odt";
         Main main = new Main();
         

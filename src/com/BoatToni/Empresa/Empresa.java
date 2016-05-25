@@ -151,11 +151,8 @@ public class Empresa implements Serializable {
     }
 
     public void afegirComercial(Comercial comercial) throws EmpresaException {
-//        if (llistaComercial.containsKey(comercial.getNumDocument())) {
-//            throw new EmpresaException("No s'ha afegit el comercial.");
-//        } else {
         llistaComercial.put(comercial.getNumDocument(), comercial);
-//        }
+
     }
 
     public void eliminarComercial(String numDocument) throws EmpresaException {
@@ -263,22 +260,29 @@ public class Empresa implements Serializable {
     }
 
     //Llistar models per tipus de model.
-    public ArrayList<Model> tipusModels(Model tipus) throws LlistesException {
-        ArrayList<Model> tipusEmb = new ArrayList();
-
-        Iterator it = llistaVaixell.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry e = (Map.Entry) it.next();
-            if (tipusEmb.getClass().equals(llistaVaixell.getClass())) {
-
-                tipusEmb.add(tipus);
-            }
-        }
-        if (tipusEmb.isEmpty()) {
-            throw new LlistesException("La llista està buida");
-        }
-        return tipusEmb;
+//    public ArrayList<Model> tipusModels(Model tipus) throws LlistesException {
+//        ArrayList<Model> tipusEmb = new ArrayList();
+//
+//        Iterator it = llistaVaixell.entrySet().iterator();
+//        while (it.hasNext()) {
+//            Map.Entry e = (Map.Entry) it.next();
+//            if (tipusEmb.getClass().equals(llistaVaixell.getClass())) {
+//
+//                tipusEmb.add(tipus);
+//            }
+//        }
+//        if (llistaVaixell.isEmpty()) {
+//            throw new LlistesException("La llista està buida");
+//        }
+//        return tipusEmb;
+//    }
+    
+    
+    public HashMap<Integer, Model> tipusModels(Model tipus) throws LlistesException{
+        return llistaModels;
     }
+    
+    
 
     // Llistar models per interval de preu.
     public HashMap modelsPreu(double petit, double gran) {

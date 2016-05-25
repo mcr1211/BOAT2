@@ -5,6 +5,7 @@ import com.BoatToni.Exceptions.EmpleatException;
 import com.BoatToni.Exceptions.PersonaException;
 import com.BoatToni.Operacions.Venda;
 import com.BoatToni.Vaixell.Model;
+import com.BoatToni.Vaixell.Vaixell;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -34,20 +35,19 @@ public class Comercial extends Empleat {
         return souComercial;
     }
 
-    public double ferNomina(Empresa empresa,Comercial comercial, Model model) {
-        ArrayList<Venda> vendesComercial = new ArrayList<>();
-        if (empresa.getLlistaVenda().containsKey(comercial.getNumDocument())) {
-            for (Venda d : empresa.getLlistaVenda().values()) {
-                souComercial = comercial.getSouEmpleat()* (model.getPreu() * comercial.getComissio() / 100);
-            }
-        }
+    public double ferNomina(Empresa empresa, Comercial comercial, Model model) {
+//        ArrayList<Venda> vendesComercial = new ArrayList<>();
+//        if (empresa.getLlistaVenda().containsKey(comercial.getNumDocument())) {
+//            for (Venda d : empresa.getLlistaVenda().values()) {
+        souComercial = comercial.getSouEmpleat() * (model.getPreu() * comercial.getComissio() / 100);
+//            }
+//        }
         return souComercial;
     }
 
     @Override
     public String toString() {
-        return "Comercial{"+ "nom= " + nom + "llinatges= " + llinatges + "tipusDocument= " + document + "numDocument= " + numDocument + "adreça= " + adreça + "email= " + email + "telefon= " + telefon + "dataAlta= " + dataAlta + "comissio=" + comissio + ", souComercial=" + souComercial + '}';
+        return "Comercial{" + "nom= " + nom + "llinatges= " + llinatges + "tipusDocument= " + document + "numDocument= " + numDocument + "adreça= " + adreça + "email= " + email + "telefon= " + telefon + "dataAlta= " + dataAlta + "comissio=" + comissio + ", souComercial=" + souComercial + '}';
     }
-    
-    
+
 }
