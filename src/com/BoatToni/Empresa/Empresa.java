@@ -42,6 +42,7 @@ public class Empresa implements Serializable {
         llistaClient = new HashMap<>();
         llistaTaller = new HashMap<>();
         llistaPatro = new HashMap<>();
+        llistaComercial= new HashMap<>();
         llistaReparacions = new HashMap<>();
         llistaVenda = new HashMap<>();
         llistaLloguer = new HashMap<>();
@@ -334,6 +335,55 @@ public class Empresa implements Serializable {
     }
 
  
+    public Client mostrarClient(String numDocument) throws EmpresaException {
+        if (!llistaClient.containsKey(numDocument)) {
+            throw new EmpresaException("Aquest client no hi es.");
+        } else {
+            return llistaClient.get(numDocument);
+        }
+    }
+
+    public Comercial mostrarComercial(String numDocument) throws EmpresaException {
+        if (!llistaComercial.containsKey(numDocument)) {
+            throw new EmpresaException("Aquest comercial no hi es.");
+        } else {
+            return llistaComercial.get(numDocument);
+        }
+    }
+
+    public Taller mostrarTaller(String numDocument) throws EmpresaException {
+        if (!llistaTaller.containsKey(numDocument)) {
+            throw new EmpresaException("Aquest treballador no hi es.");
+        } else {
+            return llistaTaller.get(numDocument);
+        }
+    }
+
+    public Patro mostrarPatro(String numDocument) throws EmpresaException {
+        if (!llistaPatro.containsKey(numDocument)) {
+            throw new EmpresaException("Aquest patró no hi és.");
+        } else {
+            return llistaPatro.get(numDocument);
+        }
+    }
+
+    public Vaixell mostrarVaixell(String matricula) throws EmpresaException {
+        if (!llistaVaixell.containsKey(matricula)) {
+            throw new EmpresaException("Aquest vaixell no hi és.");
+        } else {
+            return llistaVaixell.get(matricula);
+        }
+    }
+
+    public Model mostrarModel(String matricula) throws EmpresaException {
+        if (!llistaModels.containsKey(matricula)) {
+            throw new EmpresaException("Aquest model no hi es");
+        } else {
+            return llistaModels.get(matricula);
+        }
+    }
+    
+    
 
     //Llista lloguer disponible entre dos dies.
     public ArrayList llistaLloguerDies(Date dataInici, Date datafi) throws LlistesException {
