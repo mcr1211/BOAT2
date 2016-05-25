@@ -145,7 +145,7 @@ public class Main {
             Date dataIni = sdf.parse(dataInici);
             String dataFinal = "10-06-2016";
             Date dataFi = sdf.parse(dataFinal);
-            Reparacio rep = new Reparacio(cli, embar, "drassanes", dataIni, dataFi, "Forat a sa quilla", 10000, 1, Estat.PENDENT);
+            Reparacio rep = new Reparacio(cli, embar, "drassanes", dataIni, "Forat a sa quilla", 10000, 1, Estat.PENDENT);
 
         } catch (EmpleatException ex) {
             System.out.println(ex.getMessage());
