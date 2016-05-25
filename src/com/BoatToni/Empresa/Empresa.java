@@ -147,6 +147,9 @@ public class Empresa {
         }
     }
 
+    
+    
+    
     public void afegirComercial(Comercial comercial) throws EmpresaException {
         if (llistaComercial.containsKey(comercial.getNumDocument())) {
             throw new EmpresaException("No s'ha afegit el comercial.");
