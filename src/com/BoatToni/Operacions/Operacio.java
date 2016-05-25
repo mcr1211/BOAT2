@@ -13,12 +13,12 @@ public class Operacio {
 
     protected int id;
     protected Estat estat;
+    protected static int contador = 1;
 
     public Operacio(Estat estat) {
-        this.id = id;
+        this.id = contador;
         this.estat = estat;
-        int contador = 0;
-        id = contador++;
+        contador++;
     }
 
     public int getId() {

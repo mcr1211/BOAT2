@@ -145,15 +145,15 @@ public class Main {
             Date dataIni = sdf.parse(dataInici);
             String dataFinal = "10-06-2016";
             Date dataFi = sdf.parse(dataFinal);
-            Reparacio rep = new Reparacio(cli, embar, "drassanes", dataIni, "Forat a sa quilla", 10000, 1, Estat.PENDENT);
+            Reparacio rep = new Reparacio(cli, embar, "drassanes", dataIni, "Forat a sa quilla", 10000,  Estat.PENDENT);
             String dataInici2 = "2-05-2016";
             Date dataIni2 = sdf.parse(dataInici);
-            Reparacio rep2 = new Reparacio(cli2, embar2, "Taller BoatInc", dataIni, "Llija, pintar y pulir", 700, 2, Estat.ATURAT);
+            Reparacio rep2 = new Reparacio(cli2, embar2, "Taller BoatInc", dataIni, "Llija, pintar y pulir", 700,  Estat.ATURAT);
              String dataInici3 = "22-05-2016";
             Date dataIni3 = sdf.parse(dataInici);
-            Reparacio rep3 = new Reparacio(cli2, embar3, "Taller BoatInc", dataIni, "Motor", 10000, 3, Estat.PENDENT);
-            Reparacio rep4 = new Reparacio(cli, embar, "Aigua", dataIni, "Reparació vela", 10000, 4, Estat.PENDENT);
-            Reparacio rep5 = new Reparacio(cli, embar5, "Aigua", dataIni, "Canvi sistema GPS", 600, 5, Estat.ATURAT);
+            Reparacio rep3 = new Reparacio(cli2, embar3, "Taller BoatInc", dataIni, "Motor", 10000,  Estat.PENDENT);
+            Reparacio rep4 = new Reparacio(cli, embar, "Aigua", dataIni, "Reparació vela", 10000,  Estat.PENDENT);
+            Reparacio rep5 = new Reparacio(cli, embar5, "Aigua", dataIni, "Canvi sistema GPS", 600,  Estat.ATURAT);
             
              emp.afegirReparacio(rep);
              emp.afegirReparacio(rep2);

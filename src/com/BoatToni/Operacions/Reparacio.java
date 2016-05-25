@@ -26,8 +26,9 @@ public class Reparacio extends Operacio {
     private String descripcio;
     private double preuFactura;
 
-    public Reparacio(Client propietari, Vaixell vaixell, String llocReparacio, Date dataInici, String descripcio, double preuPresupost, int id, Estat estat) throws ReparacioException {
+    public Reparacio(Client propietari, Vaixell vaixell, String llocReparacio, Date dataInici, String descripcio, double preuPresupost, Estat estat) throws ReparacioException {
         super(estat);
+        
         this.amo = amo;
         this.vaixell = vaixell;
         this.treballadors = treballadors;
@@ -96,7 +97,7 @@ public class Reparacio extends Operacio {
 
     @Override
     public String toString() {
-        return "Reparacio{" + "propietari=" + amo + ", vaixell=" + vaixell + ", treballadors=" + treballadors + ", llocReparacio=" + llocReparacio + ", dataIniciReparacio=" + dataIniciReparacio + ", descripcio=" + descripcio + ", preuFactura=" + preuFactura + '}';
+        return "Reparacio {" + " propietari= " + amo + ", vaixell= " + vaixell + ", treballadors= " + treballadors + ", llocReparacio= " + llocReparacio + ", dataIniciReparacio= " + dataIniciReparacio + ", descripcio= " + descripcio + ", preuFactura= " + preuFactura + '}';
     }
 
 }
