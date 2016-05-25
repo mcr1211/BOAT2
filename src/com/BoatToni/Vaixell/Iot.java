@@ -58,7 +58,12 @@ public class Iot extends Model {
 
     @Override
     public String toString() {
-        return "Iot{" + "marca= " + marca + "model= " + model + "manega= " + manega + "eslora= " + eslora + "calat= " + calat + "preu= " + preu + "camarot=" + camarot + ", potencia=" + potencia + ", autonomia=" + autonomia + ", bodega=" + bodega + '}';
+        return super.toString() +"Iot{" + "camarot=" + camarot + ", potencia=" + potencia + ", autonomia=" + autonomia + ", bodega=" + bodega + '}';
+    }
+
+   
+    public String getJson() {
+        return super.getJson() + "\"camarot\"" +":" + camarot + ", \"potencia\"" +":" + potencia + ", \"autonomia\"" +":" + autonomia + ", \"bodega\"" +":"  + bodega + '}';
     }
     
     

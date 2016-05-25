@@ -46,9 +46,19 @@ public class Veler extends Model {
         this.numCabines = numCabines;
     }
 
-    @Override
+
+        @Override
     public String toString() {
-        return "Veler{" + "marca= " + marca + "model= " + model + "manega= " + manega + "eslora= " + eslora + "calat= " + calat + "preu= " + preu + "numCasc=" + numCasc + ", numPals=" + numPals + ", numCabines=" + numCabines + '}';
+        return super.toString() + "Veler{" + "numCasc=" + numCasc + ", numPals=" + numPals + ", numCabines=" + numCabines + '}';
     }
+
+    
+        public String getJson(){
+            return super.getJson() + "\"numCasc\"" +":" + numCasc + ", " + "\"numPals\"" +":"  + numPals + ", "+ "\"numCabines\"" +":"+ numCabines+ '}';
+
+    
+    }
+    
+    
 
 }
