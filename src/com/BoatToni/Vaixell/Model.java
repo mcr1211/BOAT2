@@ -35,7 +35,7 @@ public class Model implements Serializable{
     
     
     public String ConvertibleJson(){
-        return "";
+        return "Marca ";
     }
 
     public int getIdModel() {
