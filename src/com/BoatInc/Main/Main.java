@@ -13,11 +13,13 @@ import com.BoatToni.Exceptions.LlistesException;
 import com.BoatToni.Exceptions.PersonaException;
 import com.BoatToni.Exceptions.ReparacioException;
 import com.BoatToni.Operacions.Estat;
+import com.BoatToni.Operacions.Lloguer;
 import com.BoatToni.Operacions.Reparacio;
 import com.BoatToni.Persona.Client;
 import com.BoatToni.Persona.Comercial;
 import com.BoatToni.Persona.Document;
 import com.BoatToni.Persona.Habilitat;
+import com.BoatToni.Persona.Patro;
 import com.BoatToni.Persona.Taller;
 import com.BoatToni.Vaixell.Iot;
 import com.BoatToni.Vaixell.Motora;
@@ -137,11 +139,13 @@ public class Main {
             
             String dataDispo = "15-06-2016";
             Date dataDisponible = sdf.parse(dataDispo);
-            Vaixell embar = new Vaixell(dataDisponible,"6ª-TA-2-010-12", false,0, cli, veler1);
-            Vaixell embar2 = new Vaixell(dataDisponible,"7ª-TA-2-011-12", true,100, cli2, veler1);
-            Vaixell embar3 = new Vaixell(dataDisponible,"8ª-TA-2-012-10", true,2000, cli2, iot1);
+            String dataNoDispo = "00-00-0000";
+            Date dataNoDisponible = sdf.parse(dataDispo);
+            Vaixell embar = new Vaixell(dataNoDisponible,"6ª-TA-2-010-12", false,0, cli, veler1);
+            Vaixell embar2 = new Vaixell(d1,"7ª-TA-2-011-12", true,100, cli2, veler1);
+            Vaixell embar3 = new Vaixell(d4,"8ª-TA-2-012-10", true,2000, cli2, iot1);
             Vaixell embar4 = new Vaixell(dataDisponible,"9ª-TA-2-013-16", true,75, cli2, motora1);
-            Vaixell embar5 = new Vaixell(dataDisponible,"16ª-TA-2-010-12", false,5000, cli4, iot5);
+            Vaixell embar5 = new Vaixell(dataNoDisponible,"16ª-TA-2-010-12", false,5000, cli4, iot5);
 
             emp.afegirVaixell(embar);
             emp.afegirVaixell(embar2);
@@ -169,8 +173,12 @@ public class Main {
              emp.afegirReparacio(rep4);
              emp.afegirReparacio(rep5);
             
+             Lloguer lloguer1 = new Lloguer(d1, d5, cli, embar2, 2800,null,235, 1, Estat.ACABAT);
             
-            
+             
+             
+             emp.afegirLloguer(lloguer1);
+
         } catch (EmpleatException ex) {
             System.out.println(ex.getMessage());
         }
@@ -196,19 +204,28 @@ public class Main {
     }
 
     public void provesEmpresa(Empresa emp) throws LlistesException, ParseException {
+        System.out.println(emp.getLlistaLloguer());
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String dataInici = "20-06-2016";
         Date dataFi = sdf.parse(dataInici);
         String dataInici2 = "15-06-2016";
         Date dataIni = sdf.parse(dataInici2);
+        String data1 = "02-05-2016";
+        Date d2 = sdf.parse(data1);
+        
         System.out.println("MODELS DISPONIBLES PER FETXA");
-        System.out.println(emp.llistaEmbDisponibles(dataIni,dataFi));
+        System.out.println(emp.llistaEmbDisponibles(d2,dataFi));
         System.out.println("MODELS PER INTERVAL DE PREU");
         System.out.println(emp.modelsPreu(10000, 100000));
         System.out.println("REPARACIONS ATURADES");
         System.out.println(emp.llistaReparacionsAturades());
         System.out.println("REPARACIONS PENDENTS");
         System.out.println(emp.llistaReparacionsPendets());
+        
+        
+      
+
+
     }
 
     public static void main(String[] args) throws ParseException, PersonaException, EmpleatException, EmpresaException, LlistesException, ReparacioException, IOException, ClassNotFoundException {

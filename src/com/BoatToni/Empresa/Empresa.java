@@ -44,6 +44,7 @@ public class Empresa implements Serializable {
         llistaPatro = new HashMap<>();
         llistaReparacions = new HashMap<>();
         llistaVenda = new HashMap<>();
+        llistaLloguer = new HashMap<>();
         this.nom = nom;
     }
 

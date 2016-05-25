@@ -34,8 +34,8 @@ public class Model implements Serializable{
     }
     
     
-    public void tonarJson(){
-        
+    public String ConvertibleJson(){
+        return "";
     }
 
     public int getIdModel() {
