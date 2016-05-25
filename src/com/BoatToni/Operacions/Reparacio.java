@@ -22,12 +22,11 @@ public class Reparacio extends Operacio {
     private Vaixell vaixell;
     private ArrayList<Taller> treballadors;
     private String llocReparacio;
-    private Date dataInici;
-    private Date dataPrevFinal;
+    private Date dataIniciReparacio;
     private String descripcio;
     private double preuFactura;
 
-    public Reparacio(Client propietari, Vaixell vaixell, String llocReparacio, Date dataInici, Date dataPrevFinal, String descripcio, double preuPresupost, int id, Estat estat) throws ReparacioException {
+    public Reparacio(Client propietari, Vaixell vaixell, String llocReparacio, Date dataInici, String descripcio, double preuPresupost, int id, Estat estat) throws ReparacioException {
         super(estat);
         this.amo = amo;
         this.vaixell = vaixell;
@@ -36,9 +35,8 @@ public class Reparacio extends Operacio {
         if("".equals(dataInici)){
             throw new ReparacioException("Has de posar una dataInici de reparacio.");
         }else {
-            this.dataInici = dataInici;
+            this.dataIniciReparacio = dataInici;
         }
-        this.dataPrevFinal = dataPrevFinal;
         this.descripcio = descripcio;
         if("".equals(preuFactura)){
             throw new ReparacioException("Has de posar un valor a la factura.");
@@ -59,13 +57,10 @@ public class Reparacio extends Operacio {
         return llocReparacio;
     }
 
-    public Date getDataInici() {
-        return dataInici;
+    public Date getDataIniciReparacio() {
+        return dataIniciReparacio;
     }
 
-    public Date getDataPrevFinal() {
-        return dataPrevFinal;
-    }
 
     public String getDescripcio() {
         return descripcio;
@@ -79,12 +74,8 @@ public class Reparacio extends Operacio {
         this.llocReparacio = llocReparacio;
     }
 
-    public void setDataInici(Date dataInici) {
-        this.dataInici = dataInici;
-    }
-
-    public void setDataPrevFinal(Date dataPrevFinal) {
-        this.dataPrevFinal = dataPrevFinal;
+    public void setDataIniciReparacio(Date dataIniciReparacio) {
+        this.dataIniciReparacio = dataIniciReparacio;
     }
 
     public void setDescripcio(String descripcio) {
@@ -105,7 +96,7 @@ public class Reparacio extends Operacio {
 
     @Override
     public String toString() {
-        return "Reparacio{" + "propietari=" + amo + ", vaixell=" + vaixell + ", treballadors=" + treballadors + ", llocReparacio=" + llocReparacio + ", dataInici=" + dataInici + ", dataPrevFinal=" + dataPrevFinal + ", descripcio=" + descripcio + ", preuFactura=" + preuFactura + '}';
+        return "Reparacio{" + "propietari=" + amo + ", vaixell=" + vaixell + ", treballadors=" + treballadors + ", llocReparacio=" + llocReparacio + ", dataIniciReparacio=" + dataIniciReparacio + ", descripcio=" + descripcio + ", preuFactura=" + preuFactura + '}';
     }
 
 }
