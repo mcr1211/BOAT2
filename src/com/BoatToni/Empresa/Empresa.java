@@ -233,6 +233,9 @@ public class Empresa implements Serializable {
     public HashMap<Integer, Model> totsModels() {
         return llistaModels;
     }
+    
+    
+   
 
     public ArrayList<Vaixell> llistaEmbDisponibles(Date inici, Date altre) {
         ArrayList<Vaixell> lista = new ArrayList<>();
@@ -330,10 +333,7 @@ public class Empresa implements Serializable {
         }
     }
 
-    @Override
-    public String toString() {
-        return "Empresa{" + "nom=" + nom + '}';
-    }
+ 
 
     //Llista lloguer disponible entre dos dies.
     public ArrayList llistaLloguerDies(Date dataInici, Date datafi) throws LlistesException {
@@ -350,6 +350,11 @@ public class Empresa implements Serializable {
             }
             return llistatLloguerDies;
         }
+    }
+    
+       @Override
+    public String toString() {
+        return "Empresa{" + "nom=" + nom + '}';
     }
 
 }
